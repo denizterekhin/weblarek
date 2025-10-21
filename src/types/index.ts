@@ -1,4 +1,5 @@
 type ApiPostMethods = 'POST' | 'PUT' | 'DELETE';
+type TItemPrice = number | null;
 
 interface IApi {
     get<T extends object>(uri: string): Promise<T>;
@@ -7,21 +8,32 @@ interface IApi {
 
 type TPayment = "card" | "cash";
 
-
 interface IProduct {
-  id: string;
-  description: string;
-  image: string;
-  title: string;
   category: string;
-  price: number | null;
+  description: string;
+  id: string;
+  image: string;
+  price: TItemPrice;
+  title: string;
 } 
 
 interface IBuyer {
-  payment: TPayment;
+  payment: TPayment | null;
   email: string;
   phone: string;
   address: string;
 } 
 
-export {IProduct, IBuyer, TPayment, ApiPostMethods, IApi};
+interface ICardActions {
+    onClick?: (event: Event) => void;
+}
+
+interface ICardPreview extends IProduct {
+  inBasket: boolean;
+  canAddToBasket: boolean;
+}
+
+
+
+
+export {IProduct, IBuyer, TPayment, ApiPostMethods, IApi, TItemPrice, ICardActions, ICardPreview};

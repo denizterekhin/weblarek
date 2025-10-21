@@ -1,12 +1,15 @@
 import { IProduct } from "../../types";
+import { IEvents } from "../base/Events";
 
 export class ShoppingCart {
-    products: IProduct[];
-    
-    constructor(products: IProduct[] = [])
+    protected products: IProduct[];
+    protected events: IEvents;
+    constructor(events: IEvents)
     {
-        this.products = products;
+        this.products = [];
+        this.events = events;
     }
+
     // Метод для получения массива товаров в корзине
     getProducts(): IProduct[] {
         return this.products;
@@ -20,6 +23,7 @@ export class ShoppingCart {
         else {
             console.log('Товар с нулевой ценой не может быть добавлен в корзину, так как нельзя совершить покупку товара с нулевой ценой.');
         }
+        this.events.emit('basket: changed');
     }
 
     // Метод для удаления товара из корзины
@@ -28,11 +32,13 @@ export class ShoppingCart {
         if (index !== -1) {
             this.products.splice(index, 1);
         }
+        this.events.emit('basket: changed');
     }
 
     // Метод для очистки корзины
     clearCart(): void {
         this.products = [];
+        this.events.emit('basket: changed');
     }
 
     // Метод для получения стоимости всех товаров в корзине

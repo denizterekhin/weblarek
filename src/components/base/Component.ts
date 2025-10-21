@@ -17,7 +17,14 @@ export abstract class Component<T> {
             }
         }
     }
-
+// добавил состояние включение и отключение кнопки!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    changeDisabledState(element: HTMLElement, isDisabled: boolean): void {
+	  if (!element) return;
+	  
+	  isDisabled 
+		? element.setAttribute('disabled', 'true') 
+		: element.removeAttribute('disabled');
+	}
     // Вернуть корневой DOM-элемент
     render(data?: Partial<T>): HTMLElement {
         Object.assign(this as object, data ?? {});
