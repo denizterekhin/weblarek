@@ -275,7 +275,6 @@ Presenter - презентер содержит основную логику п
 ###### Содержит методы:
 - **set price(value:number | null)** - задает стоимость товара
 - **set title(value:string)** - задает название товара
-- **setImage(element: HTMLImageElement, url: string, title: string): void** - задает картинку товара
 
 #### Класс CardCatalog
 Наследуется от класса Card - class CardCatalog extends Card<Pick<IProduct, 'image' | 'category'>>
