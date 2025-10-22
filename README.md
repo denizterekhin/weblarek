@@ -340,6 +340,7 @@ Presenter - презентер содержит основную логику п
 ###### Содержит методы:
 - **set payment(value: 'cash' | 'card')** - задает состояние кнопки
 - **set address(value: string)** - задает адрес
+- **clearForm()** - очистка формы
 
 #### Класс FormContacts
 Наследуется от класса Form - class FormContacts extends Form<{ email: string, phone: string }>
@@ -352,6 +353,7 @@ Presenter - презентер содержит основную логику п
 ###### Содержит методы:
 - **set email(value: string)** - задает почту
 - **set phone(value: string)** - задает телефон
+- **clearForm()** - очистка формы
 
 #### Класс Basket
 Наследуется от класса Component - class Basket extends Component<{ items: IProduct[];
