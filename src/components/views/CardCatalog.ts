@@ -35,6 +35,6 @@ export class CardCatalog extends Card<TCardCatalog> {
         }
     }
     set image(value: string) {
-        this.setImage(this.imageElement,CDN_URL + value, this.title);
+        this.setImage(this.imageElement,CDN_URL + value, `Иконка товара: ${this.titleElement.textContent}`);
     }
 }

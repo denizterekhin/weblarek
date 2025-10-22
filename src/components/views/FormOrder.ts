@@ -23,7 +23,7 @@ export class FormOrder extends Form<IFormOrderUI> {
       button.addEventListener('click', (event: MouseEvent) => {
         const target = event.currentTarget as HTMLButtonElement;
         const value = target.name as 'cash' | 'card';
-        this.payment = value;
+        //this.payment = value;
         this.events.emit('order:payment', { payment: value });
       });
     });
@@ -52,5 +52,23 @@ export class FormOrder extends Form<IFormOrderUI> {
 
   set address(value: string) {
     this.addressElement.value = value;
+  }
+  updatePaymentDisplay(payment: 'cash' | 'card'): void {
+    this.paymentButtons.forEach((button) => {
+      const buttonElement = button as HTMLButtonElement;
+      if (buttonElement.name === payment) {
+       buttonElement.classList.add('button_alt-active');
+      } else {
+        buttonElement.classList.remove('button_alt-active');
+      }
+    });
+  }
+  clearForm() {
+    this.addressElement.value = '';
+    this.paymentElement = null;
+    this.paymentButtons.forEach((button) => {
+      const buttonElement = button as HTMLButtonElement;
+        buttonElement.classList.remove('button_alt-active');
+    });
   }
 }

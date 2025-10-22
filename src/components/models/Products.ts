@@ -31,6 +31,7 @@ export class Products {
   // Метод для сохранения товара для подробного отображения
   setSelectedItem(item: IProduct): void {
     this.selectedItem = item;
+    this.events.emit('card:select', this.selectedItem);
     
   }
 

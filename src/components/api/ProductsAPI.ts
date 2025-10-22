@@ -23,11 +23,11 @@ export class ProductsAPI {
         
         });
     }
-    placeOrder(order: IBuyer, items: IProduct[], cost: number): Promise<IApiListOrder> { 
+    placeOrder(orderData: {order: IBuyer, items: IProduct[], cost: number}): Promise<IApiListOrder> { 
         	const payload = {
-    		...order,
-			total: cost,
-			items: items.map(item => item.id),
+    		...orderData.order,
+			total: orderData.cost,
+			items: orderData.items.map(item => item.id),
             };
         return this.api.post('/order', payload);} 
 

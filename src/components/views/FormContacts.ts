@@ -22,9 +22,10 @@ export class FormContacts extends Form<IFormContacts> {
     });
 
     this.phoneElement.addEventListener('input', () => {
-      const formattedPhone = this.formatPhoneNumber(this.phoneElement.value);
-      this.phoneElement.value = formattedPhone;
-      this.events.emit('contacts:phone', { phone: formattedPhone });
+      //const formattedPhone = this.formatPhoneNumber(this.phoneElement.value);
+      //this.phoneElement.value = formattedPhone;
+      //this.events.emit('contacts:phone', { phone: formattedPhone });
+      this.events.emit('contacts:phone', { phone: this.phoneElement.value });
     });
 
     this.button.addEventListener('click', (event) => {
@@ -41,6 +42,7 @@ export class FormContacts extends Form<IFormContacts> {
     this.phoneElement.value = value;
   }
 
+  /*
   //Функция для задания маски телефона
   private formatPhoneNumber(value: string): string {
     const numbers = value.replace(/\D/g, '');
@@ -56,5 +58,11 @@ export class FormContacts extends Form<IFormContacts> {
     if (limitedNumber.length <= 7) return `+7 (${limitedNumber.slice(1, 4)}) ${limitedNumber.slice(4)}`;
     if (limitedNumber.length <= 9) return `+7 (${limitedNumber.slice(1, 4)}) ${limitedNumber.slice(4, 7)}-${limitedNumber.slice(7)}`;
     return `+7 (${limitedNumber.slice(1, 4)}) ${limitedNumber.slice(4, 7)}-${limitedNumber.slice(7, 9)}-${limitedNumber.slice(9)}`;
+  }
+
+*/
+    clearForm() {
+    this.emailElement.value = '';
+    this.phoneElement.value = '';
   }
 }

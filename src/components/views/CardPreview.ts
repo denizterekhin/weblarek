@@ -24,7 +24,7 @@ export class CardPreview extends Card<TCardPreview> {
                 this.events.emit('item:to_basked');
                 this.buttonState = 'remove';
             } else if (currentState === 'Удалить из корзины') {
-            this.events.emit('delet: item_inBasket');
+            this.events.emit('delet: item_inBasket_windowPreviewCard');
             this.buttonState = 'add';
             this.events.emit('modal:close');
             }

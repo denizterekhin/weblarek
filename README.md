@@ -204,7 +204,7 @@ Presenter - презентер содержит основную логику п
 
 ###### Содержит методы:
 - **getProducts()** - делает get запрос на эндпоинт /product/ и возвращает массив товаров
-- **placeOrder(order: IBuyer, items: IProduct[], cost: number)** - делает post запрос на эндпоинт /order/ и передаёт в него данные, полученные в параметрах метода
+- **placeOrder(orderData: {order: IBuyer, items: IProduct[], cost: number}): Promise<IApiListOrder>** - делает post запрос на эндпоинт /order/ и передаёт в него данные, полученные в параметрах метода
 
 ## «Отображение»
 

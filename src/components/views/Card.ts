@@ -23,8 +23,4 @@ export class Card<T> extends Component<T & TCard> {
     set title(value:string) {
         this.titleElement.textContent = value;
     }
-    setImage(element: HTMLImageElement, url: string, title: string): void {
-        element.src = url;
-        element.alt = `Изображение ${title}`;
-    }
 }

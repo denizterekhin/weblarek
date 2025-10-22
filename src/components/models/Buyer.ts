@@ -29,19 +29,19 @@ export class Buyer {
         */
     setPayment(payment: TPayment): void {
         this.payment = payment;
-        this.events.emit('buyer:changed', this.getAllData());
+        this.events.emit('buyer:changed');
     }
     setEmail(email: string): void {
         this.email = email;
-        this.events.emit('buyer:changed', this.getAllData());
+        this.events.emit('buyer:changed');
     }
     setPhone(phone: string): void {
         this.phone = phone;
-        this.events.emit('buyer:changed', this.getAllData());
+        this.events.emit('buyer:changed');
     }
     setAddress(address: string): void {
         this.address = address;
-        this.events.emit('buyer:changed', this.getAllData());
+        this.events.emit('buyer:changed');
     }
     // Метод для получения всех данных покупателя
     getAllData(): IBuyer {
@@ -81,15 +81,12 @@ export class Buyer {
     validateEmail(): { isValid: boolean, error?: string } {
         if (!this.email && this.email.trim() === "") {
             return { isValid: false, error: "Введите электронную почту" };
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.email)) {
-            return { isValid: false, error: "Электронная почта заполнена некорректно" };
-    }
-    return { isValid: true };
+        } else {return { isValid: true }}
     }
     validatePhone(): { isValid: boolean, error?: string } {
         if (!this.phone && this.phone.trim() === "") {
             return { isValid: false, error: "Введите номер телефона" };
-        } else if (!/^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/.test(this.phone)) {
+        } else if (!/^\+7 \(\d+\)[\d]+$/.test(this.phone)) {
             return { isValid: false, error: "Номер телефона заполнен некорректно" };
         }
         return { isValid: true };
